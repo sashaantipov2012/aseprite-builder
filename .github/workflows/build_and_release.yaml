@@ -44,18 +44,18 @@ jobs:
           skipIfReleaseExists: true
           token: ${{ secrets.GITHUB_TOKEN }}
 
-build-aseprite:
-  name: Build Aseprite
-  needs: create-release
-  permissions:
-    contents: write
-  runs-on: ${{ matrix.os }}
-  strategy:
+  build-aseprite:
+    name: Build Aseprite
+    needs: create-release
+    permissions:
+      contents: write
+    runs-on: ${{ matrix.os }}
+    strategy:
       matrix:
         os: [ windows-latest, ubuntu-latest, macOS-latest ]
         arch: [ x64, x86 ]
       fail-fast: false
-  steps:
+    steps:
     - uses: actions/checkout@v4
 
     - name: Install Dependencies (Linux)
